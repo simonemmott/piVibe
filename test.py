@@ -1,5 +1,8 @@
 import sys
 import settings
+import piVibe
+
+piVibe.mode = 'TESTING'
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:

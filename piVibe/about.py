@@ -1,0 +1,6 @@
+version = '0.0.1'
+author = 'Simon Emmott'
+author_email = 'simon.emmott@yahoo.co.uk'
+description = 'piVibe is a module for remote controlling a mains powered vibrator using a raspberry pi.'
+package = 'piVibe'
+url = 'https://github.com/simonemmott/piVibe'

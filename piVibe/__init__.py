@@ -181,7 +181,10 @@ class Vibrator(object):
         if mode == 'TESTING':
             self.ctl = TestingOutputDevice(pin, **kw)
         else:
-            self.ctl = OutputDevice(pin, **kw)
+            try:
+                self.ctl = OutputDevice(pin, **kw)
+            except:
+                self.ctl = TestingOutputDevice(pin, **kw)
             
     class RunThread(Thread):
         def __init__(self, vibrator):
@@ -227,7 +230,17 @@ class Vibrator(object):
         self.state = VState.OFF
         self.ctl.off()
         
+    def is_on(self):
+        return self.state == VState.ON
         
+    def is_off(self):
+        return self.state == VState.OFF
+    
+    def to_dict(self):
+        return {
+            'state': str(self.state),
+            'pin': self.pin
+        }
         
             
         

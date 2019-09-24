@@ -67,11 +67,16 @@ loggers:
   piVibe:
     level: DEBUG
     handlers: [console, info_file_handler, error_file_handler, critical_file_handler, debug_file_handler, warn_file_handler]
-    propogate: True
+    propogate: yes
+
+  app.api.vibe:
+    level: DEBUG
+    handlers: [console, info_file_handler, error_file_handler, critical_file_handler, debug_file_handler, warn_file_handler]
+    propogate: yes
 
   testing:
     level: DEBUG
     handlers: [console, info_file_handler, error_file_handler, critical_file_handler, debug_file_handler, warn_file_handler]
-    propogate: True
+    propogate: yes
 
 

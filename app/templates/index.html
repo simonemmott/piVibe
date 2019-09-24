@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<script>
+function vibe_state(state) {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readystate == 4 && this.status == 200) {
+			location.reload()
+		}
+	}
+	xhttp.open("GET", "/api/vibe/"+state, true)
+	xhttp.send()
+}
+</script>
+<h1>Welcome to the piVibe Web App</h1>
+{% if vibe.is_off() %}
+<button type="button" onclick="vibe_state('ON')">Turn On</button>
+{% endif %}
+{% if vibe.is_on() %}
+<button type="button" onclick="vibe_state('OFF')">Turn Off</button>
+{% endif %}
+{% endblock %}

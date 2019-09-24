@@ -1,0 +1,2 @@
+FLASK_APP=vibeweb.py
+FLASK_DEBUG=1

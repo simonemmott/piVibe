@@ -1,0 +1,17 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+    Pi Vibe Webapp
+{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar navbar-default">
+        ... navigation bar here (see complete code on GitHub) ...
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% block app_content %}{% endblock %}
+    </div>
+{% endblock %}

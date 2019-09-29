@@ -20,6 +20,18 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     install_requires = [
-        'gpiozero'
+        'Click',
+        'colorzero',
+        'dominate',
+        'Flask',
+        'Flask-Bootstrap',
+        'gpiozero',
+        'itsdangerous',
+        'Jinja2',
+        'MarkupSafe',
+        'python-dotenv',
+        'PyYAML',
+        'visitor',
+        'Werkzeug'
         ]
 )

@@ -239,7 +239,7 @@ class Vibrator(object):
     def to_dict(self):
         return {
             'state': str(self.state),
-            'pin': self.pin
+            'pin': int(self.pin)
         }
         
             

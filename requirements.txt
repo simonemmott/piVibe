@@ -1,6 +1,13 @@
+Click
 colorzero
+dominate
+Flask
+Flask-Bootstrap
 gpiozero
-pyyaml
-flask
+itsdangerous
+Jinja2
+MarkupSafe
 python-dotenv
-flask-bootstrap
+PyYAML
+visitor
+Werkzeug

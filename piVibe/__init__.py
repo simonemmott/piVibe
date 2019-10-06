@@ -209,7 +209,7 @@ class Rising(Mode):
 class Vibrator(object):
     def __init__(self, pin, **kw):
         self.state = VState.OFF
-        self.mode = Medium()
+        self.mode = VeryLow()
         self.thread = None
         if mode == 'TESTING':
             self.ctl = TestingOutputDevice(pin, **kw)

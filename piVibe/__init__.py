@@ -242,13 +242,13 @@ class Rising(Mode):
         (True, VH_OFF),
 
         (True, 1),
-        (False, 3),
-        (True, 2),
-        (False, 2),
+        (False, 5),
         (True, 3),
+        (False, 3),
+        (True, 5),
         (False, 1),
-        (True, 4),
-        (False, 4),
+        (True, 5),
+        (False, 5),
         
         
     ]

@@ -46,57 +46,52 @@ class VState(Enum):
     OFF = 'OFF'
     ON = 'ON'
     
-class Low():
-    name = 'LOW'
+
+def gen(states):
+    i=0
+    while True:
+        yield states[i]
+        i += 1
+        if i >= len(states):
+            i=0
+    
+    
+class Mode():
+    def __next__(self):
+        return next(self.gen)
+
+
+class Low(Mode):
     states = [
-        (True, 0.01),
-        (False, 0.09)
+        (True, 0.1),
+        (False, 0.9)
     ]
+    def __init__(self):
+        self.gen = gen(Low.states)
+        self.name = 'LOW'    
     
-    @staticmethod
-    def gen():
-        i=0
-        while True:
-            yield Low.states[i]
-            i += 1
-            if i >= len(Low.states):
-                i=0
     
-class Medium():
-    name = 'MEDIUM'
+class Medium(Mode):
     states = [
-        (True, 0.05),
-        (False, 0.05)
+        (True, 0.5),
+        (False, 0.5)
     ]
+    def __init__(self):
+        self.gen = gen(Medium.states)
+        self.name = 'Medium'
     
-    @staticmethod
-    def gen():
-        i=0
-        while True:
-            yield Low.states[i]
-            i += 1
-            if i >= len(Low.states):
-                i=0
     
-class High():
-    name = 'HIGH',
+class High(Mode):
     states = [
         (True, 1),
         (False, 0)
     ]
+    def __init__(self):
+        self.gen = gen(High.states)
+        self.name = 'HIGH'
 
-    
-    @staticmethod
-    def gen():
-        i=0
-        while True:
-            yield Low.states[i]
-            i += 1
-            if i >= len(Low.states):
-                i=0
-    
-class Waves():
-    name = 'WAVES',
+        
+class Waves(Mode):
     states = [
         (True, 0.01),
         (False, 0.09),
@@ -168,23 +163,15 @@ class Waves():
         (True, 1),
         (False, 1),
     ]
-    
-    @staticmethod
-    def gen():
-        i=0
-        while True:
-            yield Low.states[i]
-            i += 1
-            if i >= len(Low.states):
-                i=0
-    
-    
+    def __init__(self):
+        self.gen = gen(Waves.states)
+        self.name = 'WAVES'    
     
     
 class Vibrator(object):
     def __init__(self, pin, **kw):
         self.state = VState.OFF
-        self.mode = Medium
+        self.mode = Medium()
         self.thread = None
         if mode == 'TESTING':
             self.ctl = TestingOutputDevice(pin, **kw)
@@ -204,7 +191,7 @@ class Vibrator(object):
         def run(self):
             self.running = True
             while self.go:
-                state, t = next(self.vibrator.mode.gen())
+                state, t = next(self.vibrator.mode)
                 if state:
                     self.vibrator.ctl.on()
                 else:
@@ -246,16 +233,16 @@ class Vibrator(object):
             self.mode = mode
         
     def low(self):
-        self._change_mode(Low)
+        self._change_mode(Low())
         
     def medium(self):
-         self._change_mode(Medium)
+         self._change_mode(Medium())
         
     def high(self):
-        self._change_mode(High)
+        self._change_mode(High())
         
     def waves(self):
-        self._change_mode(Waves)
+        self._change_mode(Waves())
         
     def is_on(self):
         return self.state == VState.ON

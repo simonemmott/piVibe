@@ -46,133 +46,145 @@ class VState(Enum):
     OFF = 'OFF'
     ON = 'ON'
     
-class Gen():
-    def __init__(self, name, states):
-        self.states = states
-        self.name = name
-        
+class Low():
+    name = 'LOW'
+    states = [
+        (True, 0.01),
+        (False, 0.09)
+    ]
+    
+    @staticmethod
     def gen(self):
         i=0
         while True:
-            yield self.states[i]
+            yield Low.states[i]
             i += 1
-            if i >= len(self.states):
+            if i >= len(Low.states):
                 i=0
+    
+class Medium():
+    name = 'MEDIUM'
+    states = [
+        (True, 0.05),
+        (False, 0.05)
+    ]
+    
+    @staticmethod
+    def gen(self):
+        i=0
+        while True:
+            yield Low.states[i]
+            i += 1
+            if i >= len(Low.states):
+                i=0
+    
+class High():
+    name = 'HIGH',
+    states = [
+        (True, 1),
+        (False, 0)
+    ]
 
     
-class Low(Gen):
-    def __init__(self):
-        super(Low, self).__init__(
-            'LOW',
-            [
-                (True, 0.01),
-                (False, 0.09)
-            ]
-        )
+    @staticmethod
+    def gen(self):
+        i=0
+        while True:
+            yield Low.states[i]
+            i += 1
+            if i >= len(Low.states):
+                i=0
     
-class Medium(Gen):
-    def __init__(self):
-        super(Medium, self).__init__(
-            'MEDIUM',
-            [
-                (True, 0.05),
-                (False, 0.05)
-            ]
-        )
+class Waves():
+    name = 'WAVES',
+    states = [
+        (True, 0.01),
+        (False, 0.09),
+        (True, 0.01),
+        (False, 0.09),
+        (True, 0.01),
+        (False, 0.09),
+        
+        (True, 0.02),
+        (False, 0.08),
+        (True, 0.02),
+        (False, 0.08),
+        (True, 0.02),
+        (False, 0.08),
+        
+        (True, 0.03),
+        (False, 0.07),
+        (True, 0.03),
+        (False, 0.07),
+        (True, 0.03),
+        (False, 0.07),
+
+        (True, 0.04),
+        (False, 0.06),
+        (True, 0.04),
+        (False, 0.06),
+        (True, 0.04),
+        (False, 0.06),
+
+        (True, 0.05),
+        (False, 0.05),
+        (True, 0.05),
+        (False, 0.05),
+        (True, 0.05),
+        (False, 0.05),
+
+        (True, 0.06),
+        (False, 0.04),
+        (True, 0.06),
+        (False, 0.04),
+        (True, 0.06),
+        (False, 0.04),
+
+        (True, 0.07),
+        (False, 0.03),
+        (True, 0.07),
+        (False, 0.03),
+        (True, 0.07),
+        (False, 0.03),
+
+        (True, 0.08),
+        (False, 0.02),
+        (True, 0.08),
+        (False, 0.02),
+        (True, 0.08),
+        (False, 0.02),
+
+        (True, 0.09),
+        (False, 0.01),
+        (True, 0.09),
+        (False, 0.01),
+        (True, 0.09),
+        (False, 0.01),
+
+        (True, 1),
+        (False, 1),
+        (True, 1),
+        (False, 1),
+        (True, 1),
+        (False, 1),
+    ]
     
-class High(Gen):
-    def __init__(self):
-        super(Medium, self).__init__(
-            'HIGH',
-            [
-                (True, 1),
-                (False, 0)
-            ]
-        )
+    @staticmethod
+    def gen(self):
+        i=0
+        while True:
+            yield Low.states[i]
+            i += 1
+            if i >= len(Low.states):
+                i=0
     
-class Waves(Gen):
-    def __init__(self):
-        super(Medium, self).__init__(
-            'WAVES',
-            [
-                (True, 0.01),
-                (False, 0.09),
-                (True, 0.01),
-                (False, 0.09),
-                (True, 0.01),
-                (False, 0.09),
-                
-                (True, 0.02),
-                (False, 0.08),
-                (True, 0.02),
-                (False, 0.08),
-                (True, 0.02),
-                (False, 0.08),
-                
-                (True, 0.03),
-                (False, 0.07),
-                (True, 0.03),
-                (False, 0.07),
-                (True, 0.03),
-                (False, 0.07),
-    
-                (True, 0.04),
-                (False, 0.06),
-                (True, 0.04),
-                (False, 0.06),
-                (True, 0.04),
-                (False, 0.06),
-    
-                (True, 0.05),
-                (False, 0.05),
-                (True, 0.05),
-                (False, 0.05),
-                (True, 0.05),
-                (False, 0.05),
-    
-                (True, 0.06),
-                (False, 0.04),
-                (True, 0.06),
-                (False, 0.04),
-                (True, 0.06),
-                (False, 0.04),
-    
-                (True, 0.07),
-                (False, 0.03),
-                (True, 0.07),
-                (False, 0.03),
-                (True, 0.07),
-                (False, 0.03),
-    
-                (True, 0.08),
-                (False, 0.02),
-                (True, 0.08),
-                (False, 0.02),
-                (True, 0.08),
-                (False, 0.02),
-    
-                (True, 0.09),
-                (False, 0.01),
-                (True, 0.09),
-                (False, 0.01),
-                (True, 0.09),
-                (False, 0.01),
-    
-                (True, 1),
-                (False, 1),
-                (True, 1),
-                (False, 1),
-                (True, 1),
-                (False, 1),
-            ]
-        )
     
     
     
 class Vibrator(object):
     def __init__(self, pin, **kw):
         self.state = VState.OFF
-        self.mode = Medium()
+        self.mode = Medium
         self.thread = None
         if mode == 'TESTING':
             self.ctl = TestingOutputDevice(pin, **kw)
@@ -234,16 +246,16 @@ class Vibrator(object):
             self.mode = mode
         
     def low(self):
-        self._change_mode(Low())
+        self._change_mode(Low)
         
     def medium(self):
-         self._change_mode(Medium())
+         self._change_mode(Medium)
         
     def high(self):
-        self._change_mode(High())
+        self._change_mode(High)
         
     def waves(self):
-        self._change_mode(Waves())
+        self._change_mode(Waves)
         
     def is_on(self):
         return self.state == VState.ON

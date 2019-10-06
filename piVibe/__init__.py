@@ -70,14 +70,14 @@ def mode(cls):
     modes[cls.__name__] = cls
     return cls
 
-VL_ON = 0.02
-VL_OFF = 0.18
+VL_ON = 0.01
+VL_OFF = 0.19
 
 L_ON = 0.06
 L_OFF = 0.14
 
-M_ON = 0.08
-M_OFF = 0.12
+M_ON = 0.09
+M_OFF = 0.13
 
 H_ON = 0.1
 H_OFF = 0.1

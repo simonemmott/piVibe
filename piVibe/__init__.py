@@ -58,7 +58,7 @@ def gen(states):
     
 class Mode():
     @property
-    def name():
+    def name(self):
         return self.__class__.__name__
     
     def __next__(self):
@@ -73,8 +73,8 @@ def mode(cls):
 @mode
 class VeryLow(Mode):
     states = [
-        (True, 0.02),
-        (False, 0.18)
+        (True, 0.04),
+        (False, 0.4)
     ]
     def __init__(self):
         self.gen = gen(Low.states)
@@ -189,7 +189,7 @@ class Rising(Mode):
         (False, 1),
     ]
     def __init__(self):
-        self.gen = gen(Waves.states)
+        self.gen = gen(Rising.states)
     
     
 class Vibrator(object):
@@ -265,7 +265,7 @@ class Vibrator(object):
     def to_dict(self):
         return {
             'state': str(self.state),
-            'mode': str(self.mode.name),
+            'mode': self.mode.name,
             'pin': str(self.pin)
         }
         

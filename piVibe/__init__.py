@@ -73,14 +73,14 @@ def mode(cls):
 VL_ON = 0.02
 VL_OFF = 0.18
 
-L_ON = 0.05
-L_OFF = 0.15
+L_ON = 0.06
+L_OFF = 0.14
 
 M_ON = 0.08
 M_OFF = 0.12
 
-H_ON = 0.12
-H_OFF = 0.08
+H_ON = 0.1
+H_OFF = 0.1
 
 VH_ON = 0.18
 VH_OFF = 0.02
@@ -339,7 +339,7 @@ class Rising(Mode):
         (True, VH_ON),
         (True, VH_OFF),
 
-        (False, 1),
+        (False, 3),
         (True, 1),
         (False, 5),
         (True, 3),

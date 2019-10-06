@@ -182,7 +182,7 @@ class Vibrator(object):
             self.ctl = TestingOutputDevice(pin, **kw)
         else:
             try:
-                self.ctl = OutputDevice(pin, **kw)
+                self.ctl = OutputDevice(pin, active_high=False, **kw)
             except:
                 self.ctl = TestingOutputDevice(pin, **kw)
             

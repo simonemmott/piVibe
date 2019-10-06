@@ -192,7 +192,7 @@ class Vibrator(object):
         def run(self):
             self.running = True
             while self.go:
-                state, t = next(self.vibrator.mode)
+                state, t = next(self.vibrator.mode.gen())
                 if state:
                     self.vibrator.ctl.on()
                 else:

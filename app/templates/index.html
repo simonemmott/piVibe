@@ -17,8 +17,7 @@ function vibe_state(state) {
 <button type="button" onclick="vibe_state('ON')">On</button>
 <button type="button" onclick="vibe_state('OFF')">Off</button>
 <br/>
-<button type="button" onclick="vibe_state('Low')">Low</button>
-<button type="button" onclick="vibe_state('Medium')">Medium</button>
-<button type="button" onclick="vibe_state('High')">High</button>
-<button type="button" onclick="vibe_state('Waves')">Waves</button>
+{% for mode in modes %}
+<button type="button" onclick="vibe_state('{{mode}}')">{{mode}}</button>
+{% endfor %}
 {% endblock %}

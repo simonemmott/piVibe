@@ -73,8 +73,8 @@ def mode(cls):
 @mode
 class VeryLow(Mode):
     states = [
-        (True, 0.1),
-        (False, 0.9)
+        (True, 0.02),
+        (False, 0.2)
     ]
     def __init__(self):
         self.gen = gen(Low.states)
@@ -82,8 +82,8 @@ class VeryLow(Mode):
 @mode
 class Low(Mode):
     states = [
-        (True, 0.2),
-        (False, 0.8)
+        (True, 0.04),
+        (False, 0.1)
     ]
     def __init__(self):
         self.gen = gen(Low.states)
@@ -91,8 +91,8 @@ class Low(Mode):
 @mode    
 class Medium(Mode):
     states = [
-        (True, 0.3),
-        (False, 0.7)
+        (True, 0.06),
+        (False, 0.08)
     ]
     def __init__(self):
         self.gen = gen(Medium.states)
@@ -100,8 +100,8 @@ class Medium(Mode):
 @mode    
 class High(Mode):
     states = [
-        (True, 0.5),
-        (False, 0.5)
+        (True, 0.08),
+        (False, 0.05)
     ]
     def __init__(self):
         self.gen = gen(High.states)

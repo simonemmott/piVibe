@@ -12,20 +12,11 @@ def vibe_state(state):
     if state == 'ON':
         logger.debug('Vibe: ON')
         vibe.on()
-    if state == 'OFF':
+    elif state == 'OFF':
         logger.debug('Vibe: OFF')
         vibe.off()
-    if state == 'LOW':
-        logger.debug('Vibe Mode: LOW')
-        vibe.low()
-    if state == 'MEDIUM':
-        logger.debug('Vibe Mode: MEDIUM')
-        vibe.medium()
-    if state == 'HIGH':
-        logger.debug('Vibe Mode: HIGH')
-        vibe.high()
-    if state == 'WAVES':
-        logger.debug('Vibe Mode: WAVES')
-        vibe.waves()
+    else:
+        logger.debug('Vibe Mode: {state}'.format(state=state))
+        vibe.set_mode(state)
     return jsonify(vibe.to_dict())
     

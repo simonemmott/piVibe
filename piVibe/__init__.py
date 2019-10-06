@@ -71,19 +71,19 @@ def mode(cls):
     return cls
 
 VL_ON = 0.02
-VL_OFF = 0.48
+VL_OFF = 0.18
 
-L_ON = 0.1
-L_OFF = 0.4
+L_ON = 0.04
+L_OFF = 0.16
 
-M_ON = 0.2
-M_OFF = 0.3
+M_ON = 0.08
+M_OFF = 0.12
 
-H_ON = 0.3
-H_OFF = 0.2
+H_ON = 0.12
+H_OFF = 0.8
 
-VH_ON = 0.4
-VH_OFF = 0.1
+VH_ON = 0.18
+VH_OFF = 0.02
 
 @mode
 class VeryLow(Mode):
@@ -156,6 +156,26 @@ class Rising(Mode):
         (False, VL_OFF),
         (True, VL_ON),
         (False, VL_OFF),
+        (True, VL_ON),
+        (False, VL_OFF),
+        (True, VL_ON),
+        (False, VL_OFF),
+        (True, VL_ON),
+        (False, VL_OFF),
+        (True, VL_ON),
+        (False, VL_OFF),
+        (True, VL_ON),
+        (False, VL_OFF),
+        (True, VL_ON),
+        (False, VL_OFF),
+        (True, VL_ON),
+        (False, VL_OFF),
+        (True, VL_ON),
+        (False, VL_OFF),
+        (True, VL_ON),
+        (False, VL_OFF),
+        (True, VL_ON),
+        (False, VL_OFF),
         
         (True, L_ON),
         (False, L_OFF),
@@ -177,7 +197,47 @@ class Rising(Mode):
         (False, L_OFF),
         (True, L_ON),
         (False, L_OFF),
+        (True, L_ON),
+        (False, L_OFF),
+        (True, L_ON),
+        (False, L_OFF),
+        (True, L_ON),
+        (False, L_OFF),
+        (True, L_ON),
+        (False, L_OFF),
+        (True, L_ON),
+        (False, L_OFF),
+        (True, L_ON),
+        (False, L_OFF),
+        (True, L_ON),
+        (False, L_OFF),
+        (True, L_ON),
+        (False, L_OFF),
+        (True, L_ON),
+        (False, L_OFF),
+        (True, L_ON),
+        (False, L_OFF),
         
+        (True, M_ON),
+        (False, M_OFF),
+        (True, M_ON),
+        (False, M_OFF),
+        (True, M_ON),
+        (False, M_OFF),
+        (True, M_ON),
+        (False, M_OFF),
+        (True, M_ON),
+        (False, M_OFF),
+        (True, M_ON),
+        (False, M_OFF),
+        (True, M_ON),
+        (False, M_OFF),
+        (True, M_ON),
+        (False, M_OFF),
+        (True, M_ON),
+        (False, M_OFF),
+        (True, M_ON),
+        (False, M_OFF),
         (True, M_ON),
         (False, M_OFF),
         (True, M_ON),
@@ -219,7 +279,47 @@ class Rising(Mode):
         (False, H_OFF),
         (True, H_ON),
         (False, H_OFF),
+        (True, H_ON),
+        (False, H_OFF),
+        (True, H_ON),
+        (False, H_OFF),
+        (True, H_ON),
+        (False, H_OFF),
+        (True, H_ON),
+        (False, H_OFF),
+        (True, H_ON),
+        (False, H_OFF),
+        (True, H_ON),
+        (False, H_OFF),
+        (True, H_ON),
+        (False, H_OFF),
+        (True, H_ON),
+        (False, H_OFF),
+        (True, H_ON),
+        (False, H_OFF),
+        (True, H_ON),
+        (False, H_OFF),
 
+        (True, VH_ON),
+        (True, VH_OFF),
+        (True, VH_ON),
+        (True, VH_OFF),
+        (True, VH_ON),
+        (True, VH_OFF),
+        (True, VH_ON),
+        (True, VH_OFF),
+        (True, VH_ON),
+        (True, VH_OFF),
+        (True, VH_ON),
+        (True, VH_OFF),
+        (True, VH_ON),
+        (True, VH_OFF),
+        (True, VH_ON),
+        (True, VH_OFF),
+        (True, VH_ON),
+        (True, VH_OFF),
+        (True, VH_ON),
+        (True, VH_OFF),
         (True, VH_ON),
         (True, VH_OFF),
         (True, VH_ON),

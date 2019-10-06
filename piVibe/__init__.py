@@ -357,12 +357,12 @@ class Rising(Mode):
      
 def random_mode():    
     while True:
-        on = random.randint(0,5) > 0
-        intensity = random.randint(10,90)/100
+        on = random.randint(0,3) > 0
+        intensity = random.randint(5,95)/100
         s_time = 0.2
         t_on = s_time*intensity
         t_off = 0.2 - t_on
-        steps = int(random.randint(50,500)*(1-intensity))
+        steps = int(random.randint(50,500)*(1/intensity))
         if on:
             toggle = False
             for i in range(steps):

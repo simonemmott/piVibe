@@ -73,8 +73,8 @@ def mode(cls):
 VL_ON = 0.02
 VL_OFF = 0.18
 
-L_ON = 0.04
-L_OFF = 0.16
+L_ON = 0.05
+L_OFF = 0.15
 
 M_ON = 0.08
 M_OFF = 0.12
@@ -131,9 +131,7 @@ class VeryHigh(Mode):
         self.gen = gen(High.states)
 
 @mode        
-class Rising(Mode):
-    VL_ON = 0.02
-    
+class Rising(Mode):    
     
     states = [
         (True, VL_ON),
@@ -341,6 +339,7 @@ class Rising(Mode):
         (True, VH_ON),
         (True, VH_OFF),
 
+        (False, 1),
         (True, 1),
         (False, 5),
         (True, 3),

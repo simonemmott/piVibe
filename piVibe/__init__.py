@@ -357,7 +357,7 @@ class Rising(Mode):
      
 def random_mode():    
     while True:
-        on = bool(random.randint(0,1))
+        on = random.randint(0,2) > 0
         intensity = random.randint(10,90)/100
         s_time = 0.2
         t_on = s_time*intensity

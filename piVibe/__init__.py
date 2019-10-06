@@ -70,11 +70,26 @@ def mode(cls):
     modes[cls.__name__] = cls
     return cls
 
+VL_ON = 0.02
+VL_OFF = 1.5
+
+L_ON = 0.08
+L_OFF = 0.17
+
+M_ON = 0.1
+M_OFF = 0.15
+
+H_ON = 0.15
+H_OFF = 0.1
+
+VH_ON = 1.5
+VH_OFF = 0.02
+
 @mode
 class VeryLow(Mode):
     states = [
-        (True, 0.02),
-        (False, 1)
+        (True, VL_ON),
+        (False, VL_OFF),
     ]
     def __init__(self):
         self.gen = gen(Low.states)
@@ -82,8 +97,8 @@ class VeryLow(Mode):
 @mode
 class Low(Mode):
     states = [
-        (True, 0.05),
-        (False, 0.2)
+        (True, L_ON),
+        (False, L_OFF),
     ]
     def __init__(self):
         self.gen = gen(Low.states)
@@ -91,8 +106,8 @@ class Low(Mode):
 @mode    
 class Medium(Mode):
     states = [
-        (True, 0.1),
-        (False, 0.15)
+        (True, M_ON),
+        (False, M_OFF),
     ]
     def __init__(self):
         self.gen = gen(Medium.states)
@@ -100,8 +115,8 @@ class Medium(Mode):
 @mode    
 class High(Mode):
     states = [
-        (True, 0.15),
-        (False, 0.1)
+        (True, H_ON),
+        (False, H_OFF),
     ]
     def __init__(self):
         self.gen = gen(High.states)
@@ -109,83 +124,83 @@ class High(Mode):
 @mode    
 class VeryHigh(Mode):
     states = [
-        (True, 10),
+        (True, VH_ON),
+        (True, VH_OFF),
     ]
     def __init__(self):
         self.gen = gen(High.states)
 
 @mode        
 class Rising(Mode):
+    VL_ON = 0.02
+    
+    
     states = [
-        (True, 0.01),
-        (False, 0.09),
-        (True, 0.01),
-        (False, 0.09),
-        (True, 0.01),
-        (False, 0.09),
+        (True, VL_ON),
+        (False, VL_OFF),
+        (True, VL_ON),
+        (False, VL_OFF),
+        (True, VL_ON),
+        (False, VL_OFF),
+        (True, VL_ON),
+        (False, VL_OFF),
+        (True, VL_ON),
+        (False, VL_OFF),
         
-        (True, 0.02),
-        (False, 0.08),
-        (True, 0.02),
-        (False, 0.08),
-        (True, 0.02),
-        (False, 0.08),
+        (True, L_ON),
+        (False, L_OFF),
+        (True, L_ON),
+        (False, L_OFF),
+        (True, L_ON),
+        (False, L_OFF),
+        (True, L_ON),
+        (False, L_OFF),
+        (True, L_ON),
+        (False, L_OFF),
         
-        (True, 0.03),
-        (False, 0.07),
-        (True, 0.03),
-        (False, 0.07),
-        (True, 0.03),
-        (False, 0.07),
+        (True, M_ON),
+        (False, M_OFF),
+        (True, M_ON),
+        (False, M_OFF),
+        (True, M_ON),
+        (False, M_OFF),
+        (True, M_ON),
+        (False, M_OFF),
+        (True, M_ON),
+        (False, M_OFF),
 
-        (True, 0.04),
-        (False, 0.06),
-        (True, 0.04),
-        (False, 0.06),
-        (True, 0.04),
-        (False, 0.06),
+        (True, H_ON),
+        (False, H_OFF),
+        (True, H_ON),
+        (False, H_OFF),
+        (True, H_ON),
+        (False, H_OFF),
+        (True, H_ON),
+        (False, H_OFF),
+        (True, H_ON),
+        (False, H_OFF),
 
-        (True, 0.05),
-        (False, 0.05),
-        (True, 0.05),
-        (False, 0.05),
-        (True, 0.05),
-        (False, 0.05),
+        (True, VH_ON),
+        (True, VH_OFF),
+        (True, VH_ON),
+        (True, VH_OFF),
+        (True, VH_ON),
+        (True, VH_OFF),
+        (True, VH_ON),
+        (True, VH_OFF),
+        (True, VH_ON),
+        (True, VH_OFF),
 
-        (True, 0.06),
-        (False, 0.04),
-        (True, 0.06),
-        (False, 0.04),
-        (True, 0.06),
-        (False, 0.04),
-
-        (True, 0.07),
-        (False, 0.03),
-        (True, 0.07),
-        (False, 0.03),
-        (True, 0.07),
-        (False, 0.03),
-
-        (True, 0.08),
-        (False, 0.02),
-        (True, 0.08),
-        (False, 0.02),
-        (True, 0.08),
-        (False, 0.02),
-
-        (True, 0.09),
-        (False, 0.01),
-        (True, 0.09),
-        (False, 0.01),
-        (True, 0.09),
-        (False, 0.01),
-
-        (True, 1),
-        (False, 1),
-        (True, 1),
-        (False, 1),
-        (True, 1),
-        (False, 1),
+        (True, 2),
+        (False, 4),
+        (True, 3),
+        (False, 3),
+        (True, 4),
+        (False, 2),
+        (True, 6),
+        (False, 6),
+        
+        
     ]
     def __init__(self):
         self.gen = gen(Rising.states)

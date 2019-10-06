@@ -46,138 +46,134 @@ class VState(Enum):
     OFF = 'OFF'
     ON = 'ON'
     
-class Modes():
-    @staticmethod
-    def gen(states):
-        i = 0
+class Gen():
+    def __init__(self, name, states):
+        self.states = states
+        self.name = name
+        
+    def gen(self):
+        i=0
         while True:
-            yield states[i]
+            yield self.states[i]
             i += 1
-            if i >= len(states):
+            if i >= len(self.states):
                 i=0
-                
-    high_states = [
-            (True, 1),
-            (False, 0)
-        ]
-        
-    medium_states = [
-            (True, 0.2),
-            (False, 0.1)
-        ]
-        
-    low_states = [
-            (True, 0.1),
-            (False, 0.2)
-        ]
-    
-    wave_states = [
-            (True, 0.05),
-            (False, 0.25),
-            (True, 0.1),
-            (False, 0.2),
-            (True, 0.15),
-            (False, 0.15),
-            (True, 0.2),
-            (False, 0.1),
-            (True, 0.25),
-            (False, 0.05),
-            (True, 0.2),
-            (False, 0.1),
-            (True, 0.15),
-            (False, 0.15),
-            (True, 0.1),
-            (False, 0.2)
-        ]
-        
-    @staticmethod
-    def HIGH():
-        return Modes.gen(Modes.high_states)
-    
-    @staticmethod
-    def MEDIUM():
-        return Modes.gen(Modes.medium_states)
-    
-    @staticmethod
-    def LOW():
-        return Modes.gen(Modes.low_states)
-    
-    @staticmethod
-    def WAVE():
-        return Modes.gen(Modes.wave_states)
-    
-class HistoryData():
-    def __init__(self, history, start, end, interval=0.1):
-        self.history = history
-        self.timedelta = timedelta(milliseconds=interval*1000)
-        self._index = None
-        self._time_index = None
-        self.start = start
-        self.end = end
-        
-    def get(self, dt, default=None):
-        if dt < self.start:
-            return default
-        if dt > self.end:
-            return default
-        for state in self.history:
-            if state[0] <= dt:
-                start = state
-            if state[0] > dt:
-                end = state
-                break
-        if start:
-            return start[1]
-        else:
-            return False
-        
-    def __iter__(self):
-        self._index = 0
-        self._time_index = self.start
-        return self
-    
-    def __next__(self):
-        val = (self._time_index, self.history[self._index][1])
-        self._time_index += self.timedelta
-        if self._index + 1 < len(self.history):
-            while self._index + 1 < len(self.history) and self._time_index >= self.history[self._index+1][0]:
-                self._index += 1
-        if self._time_index > self.end:
-            raise StopIteration()
-        return val
-    
-    def __contains__(self, dt):
-        return dt >= self.start and dt <= self.end
-    
-    def __get_item__(self, dt):
-        val = self.get(dt)
-        if val == None:
-            raise KeyError('{dt} not in data range'.format(dt=dt))
-                
-    
-class History(object):
-    def __init__(self):
-        self.created = datetime.now()
-        self.history = []
-        
-    def append(self, state):
-        self.history.append((datetime.now(), state))
-        
-    def data(self, start=None, end=None, interval=0.1):
-        if not start:
-            start = self.created
-        if not end:
-            end = datetime.now()
-        return HistoryData(self.history, start, end, interval)
-    
-    
 
+    
+class Low(Gen):
+    def __init__(self):
+        super(Low, self).__init__(
+            'LOW',
+            [
+                (True, 0.01),
+                (False, 0.09)
+            ]
+        )
+    
+class Medium(Gen):
+    def __init__(self):
+        super(Medium, self).__init__(
+            'MEDIUM',
+            [
+                (True, 0.05),
+                (False, 0.05)
+            ]
+        )
+    
+class High(Gen):
+    def __init__(self):
+        super(Medium, self).__init__(
+            'HIGH',
+            [
+                (True, 1),
+                (False, 0)
+            ]
+        )
+    
+class Waves(Gen):
+    def __init__(self):
+        super(Medium, self).__init__(
+            'WAVES',
+            [
+                (True, 0.01),
+                (False, 0.09),
+                (True, 0.01),
+                (False, 0.09),
+                (True, 0.01),
+                (False, 0.09),
+                
+                (True, 0.02),
+                (False, 0.08),
+                (True, 0.02),
+                (False, 0.08),
+                (True, 0.02),
+                (False, 0.08),
+                
+                (True, 0.03),
+                (False, 0.07),
+                (True, 0.03),
+                (False, 0.07),
+                (True, 0.03),
+                (False, 0.07),
+    
+                (True, 0.04),
+                (False, 0.06),
+                (True, 0.04),
+                (False, 0.06),
+                (True, 0.04),
+                (False, 0.06),
+    
+                (True, 0.05),
+                (False, 0.05),
+                (True, 0.05),
+                (False, 0.05),
+                (True, 0.05),
+                (False, 0.05),
+    
+                (True, 0.06),
+                (False, 0.04),
+                (True, 0.06),
+                (False, 0.04),
+                (True, 0.06),
+                (False, 0.04),
+    
+                (True, 0.07),
+                (False, 0.03),
+                (True, 0.07),
+                (False, 0.03),
+                (True, 0.07),
+                (False, 0.03),
+    
+                (True, 0.08),
+                (False, 0.02),
+                (True, 0.08),
+                (False, 0.02),
+                (True, 0.08),
+                (False, 0.02),
+    
+                (True, 0.09),
+                (False, 0.01),
+                (True, 0.09),
+                (False, 0.01),
+                (True, 0.09),
+                (False, 0.01),
+    
+                (True, 1),
+                (False, 1),
+                (True, 1),
+                (False, 1),
+                (True, 1),
+                (False, 1),
+            ]
+        )
+    
+    
+    
 class Vibrator(object):
     def __init__(self, pin, **kw):
         self.state = VState.OFF
-        self.mode = Modes.LOW()
+        self.mode = Medium()
         self.thread = None
-        self.history = History()
         if mode == 'TESTING':
             self.ctl = TestingOutputDevice(pin, **kw)
         else:
@@ -201,7 +197,6 @@ class Vibrator(object):
                     self.vibrator.ctl.on()
                 else:
                     self.vibrator.ctl.off()
-                self.vibrator.history.append(state)
                 time.sleep(t)
             self.running = False
             
@@ -230,6 +225,26 @@ class Vibrator(object):
         self.state = VState.OFF
         self.ctl.off()
         
+    def _change_mode(self, mode):
+        if self.is_on():
+            self.off()
+            self.mode = mode
+            self.on()
+        else:
+            self.mode = mode
+        
+    def low(self):
+        self._change_mode(Low())
+        
+    def medium(self):
+         self._change_mode(Medium())
+        
+    def high(self):
+        self._change_mode(High())
+        
+    def waves(self):
+        self._change_mode(Waves())
+        
     def is_on(self):
         return self.state == VState.ON
         
@@ -239,6 +254,7 @@ class Vibrator(object):
     def to_dict(self):
         return {
             'state': str(self.state),
+            'mode': str(self.mode.name),
             'pin': str(self.pin)
         }
         

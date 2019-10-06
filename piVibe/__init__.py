@@ -54,7 +54,7 @@ class Low():
     ]
     
     @staticmethod
-    def gen(self):
+    def gen():
         i=0
         while True:
             yield Low.states[i]
@@ -70,7 +70,7 @@ class Medium():
     ]
     
     @staticmethod
-    def gen(self):
+    def gen():
         i=0
         while True:
             yield Low.states[i]
@@ -87,7 +87,7 @@ class High():
 
     
     @staticmethod
-    def gen(self):
+    def gen():
         i=0
         while True:
             yield Low.states[i]
@@ -170,7 +170,7 @@ class Waves():
     ]
     
     @staticmethod
-    def gen(self):
+    def gen():
         i=0
         while True:
             yield Low.states[i]

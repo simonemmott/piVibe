@@ -80,7 +80,7 @@ M_ON = 0.08
 M_OFF = 0.12
 
 H_ON = 0.12
-H_OFF = 0.8
+H_OFF = 0.08
 
 VH_ON = 0.18
 VH_OFF = 0.02

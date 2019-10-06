@@ -362,7 +362,7 @@ def random_mode():
         s_time = 0.2
         t_on = s_time*intensity
         t_off = 0.2 - t_on
-        steps = int(random.randint(10,100)*(0.4/intensity**2))
+        steps = int(random.randint(10,100)*(0.4/intensity))
         if on:
             toggle = False
             for i in range(steps):

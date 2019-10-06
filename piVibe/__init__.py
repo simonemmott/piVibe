@@ -74,7 +74,7 @@ def mode(cls):
 class VeryLow(Mode):
     states = [
         (True, 0.02),
-        (False, 0.5)
+        (False, 0.7)
     ]
     def __init__(self):
         self.gen = gen(Low.states)

@@ -4,6 +4,7 @@ import logging
 from threading import Thread
 from datetime import datetime, timedelta
 import time
+import random
 
 logger = logging.getLogger(__name__)
 
@@ -70,11 +71,11 @@ def mode(cls):
     modes[cls.__name__] = cls
     return cls
 
-VL_ON = 0.01
-VL_OFF = 0.19
+VL_ON = 0.02
+VL_OFF = 0.18
 
-L_ON = 0.06
-L_OFF = 0.14
+L_ON = 0.08
+L_OFF = 0.12
 
 M_ON = 0.09
 M_OFF = 0.13
@@ -353,6 +354,33 @@ class Rising(Mode):
     ]
     def __init__(self):
         self.gen = gen(Rising.states)
+     
+def random_mode():    
+    while True:
+        on = bool(random.randint(0,1))
+        intensity = random.randint(10,90)/100
+        s_time = 0.2
+        t_on = s_time*intensity
+        t_off = 0.2 - t_on
+        steps = random.randint(10,100)
+        if on:
+            toggle = False
+            for i in range(steps):
+                toggle = not toggle
+                if toggle:
+                    yield (True, t_on)
+                else:
+                    yield (False, t_off)
+                
+        else:
+            yield (False, steps*s_time)
+            
+            
+        
+@mode
+class Random(Mode):
+    def __init__(self):
+        self.gen = random_mode()
     
     
 class Vibrator(object):

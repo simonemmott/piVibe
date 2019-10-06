@@ -1,6 +1,6 @@
 from unittest import TestCase
 from unittest.mock import patch
-from piVibe import Vibrator, VState, Modes, History, HistoryData
+from piVibe import Vibrator, VState, Low, Medium, High, Waves
 from datetime import datetime, timedelta
 import time
 
@@ -52,31 +52,31 @@ class PiVibeTests(TestCase):
         
         
     def test_Modes_HIGH(self):
-        mode = Modes.HIGH()
-        self.assertEqual(Modes.high_states[0], next(mode))
-        self.assertEqual(Modes.high_states[1], next(mode))
-        self.assertEqual(Modes.high_states[0], next(mode))
-        self.assertEqual(Modes.high_states[1], next(mode))
-        self.assertEqual(Modes.high_states[0], next(mode))
-        self.assertEqual(Modes.high_states[1], next(mode))
+        mode = High()
+        self.assertEqual(High.states[0], next(mode))
+        self.assertEqual(High.states[1], next(mode))
+        self.assertEqual(High.states[0], next(mode))
+        self.assertEqual(High.states[1], next(mode))
+        self.assertEqual(High.states[0], next(mode))
+        self.assertEqual(High.states[1], next(mode))
         
     def test_Modes_MEDIUM(self):
-        mode = Modes.MEDIUM()
-        self.assertEqual(Modes.medium_states[0], next(mode))
-        self.assertEqual(Modes.medium_states[1], next(mode))
-        self.assertEqual(Modes.medium_states[0], next(mode))
-        self.assertEqual(Modes.medium_states[1], next(mode))
-        self.assertEqual(Modes.medium_states[0], next(mode))
-        self.assertEqual(Modes.medium_states[1], next(mode))
+        mode = Medium()
+        self.assertEqual(Medium.states[0], next(mode))
+        self.assertEqual(Medium.states[1], next(mode))
+        self.assertEqual(Medium.states[0], next(mode))
+        self.assertEqual(Medium.states[1], next(mode))
+        self.assertEqual(Medium.states[0], next(mode))
+        self.assertEqual(Medium.states[1], next(mode))
         
-    def test_Modes_HIGH(self):
-        mode = Modes.LOW()
-        self.assertEqual(Modes.low_states[0], next(mode))
-        self.assertEqual(Modes.low_states[1], next(mode))
-        self.assertEqual(Modes.low_states[0], next(mode))
-        self.assertEqual(Modes.low_states[1], next(mode))
-        self.assertEqual(Modes.low_states[0], next(mode))
-        self.assertEqual(Modes.low_states[1], next(mode))
+    def test_Modes_LOW(self):
+        mode = Low()
+        self.assertEqual(Low.states[0], next(mode))
+        self.assertEqual(Low.states[1], next(mode))
+        self.assertEqual(Low.states[0], next(mode))
+        self.assertEqual(Low.states[1], next(mode))
+        self.assertEqual(Low.states[0], next(mode))
+        self.assertEqual(Low.states[1], next(mode))
     
     def test_create_History(self):
         h = History()

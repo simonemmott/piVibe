@@ -14,10 +14,10 @@ function vibe_state(state) {
 }
 </script>
 <h1>Welcome to the piVibe Web App!</h1>
-{% if vibe.is_off() %}
-<button type="button" onclick="vibe_state('ON')">Turn On</button>
-{% endif %}
-{% if vibe.is_on() %}
-<button type="button" onclick="vibe_state('OFF')">Turn Off</button>
-{% endif %}
+<button type="button" onclick="vibe_state('ON')">On</button>
+<button type="button" onclick="vibe_state('OFF')">Off</button>
+<button type="button" onclick="vibe_state('LOW')">Low</button>
+<button type="button" onclick="vibe_state('MEDIUM')">Medium</button>
+<button type="button" onclick="vibe_state('HIGH')">High</button>
+<button type="button" onclick="vibe_state('WAVES')">Waves</button>
 {% endblock %}

@@ -1,5 +1,6 @@
 from flask import render_template
-from app import app, vibe, modes
+from app import app, vibe
+from piVibe import modes
 
 @app.route('/')
 @app.route('/index')

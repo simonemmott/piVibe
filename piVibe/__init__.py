@@ -57,10 +57,20 @@ def gen(states):
     
     
 class Mode():
+    @property
+    def name():
+        return self.__class__.__name__
+    
     def __next__(self):
         return next(self.gen)
+    
+modes = {}
+    
+def mode(cls):
+    modes[cls.__name__] = cls
+    return cls
 
-
+@mode
 class Low(Mode):
     states = [
         (True, 0.01),
@@ -68,9 +78,8 @@ class Low(Mode):
     ]
     def __init__(self):
         self.gen = gen(Low.states)
-        self.name = 'LOW'    
     
-    
+@mode    
 class Medium(Mode):
     states = [
         (True, 0.05),
@@ -78,9 +87,8 @@ class Medium(Mode):
     ]
     def __init__(self):
         self.gen = gen(Medium.states)
-        self.name = 'Medium'
     
-    
+@mode    
 class High(Mode):
     states = [
         (True, 1),
@@ -88,9 +96,8 @@ class High(Mode):
     ]
     def __init__(self):
         self.gen = gen(High.states)
-        self.name = 'HIGH'
 
-        
+@mode        
 class Waves(Mode):
     states = [
         (True, 0.01),
@@ -165,7 +172,6 @@ class Waves(Mode):
     ]
     def __init__(self):
         self.gen = gen(Waves.states)
-        self.name = 'WAVES'    
     
     
 class Vibrator(object):
@@ -224,25 +230,13 @@ class Vibrator(object):
         self.state = VState.OFF
         self.ctl.off()
         
-    def _change_mode(self, mode):
+    def set_mode(self, mode):
         if self.is_on():
             self.off()
-            self.mode = mode
+            self.mode = modes[mode]()
             self.on()
         else:
-            self.mode = mode
-        
-    def low(self):
-        self._change_mode(Low())
-        
-    def medium(self):
-         self._change_mode(Medium())
-        
-    def high(self):
-        self._change_mode(High())
-        
-    def waves(self):
-        self._change_mode(Waves())
+            self.mode = modes[mode]()
         
     def is_on(self):
         return self.state == VState.ON

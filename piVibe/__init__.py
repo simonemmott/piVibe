@@ -71,19 +71,19 @@ def mode(cls):
     return cls
 
 VL_ON = 0.02
-VL_OFF = 1.5
+VL_OFF = 0.48
 
-L_ON = 0.08
-L_OFF = 0.17
+L_ON = 0.1
+L_OFF = 0.4
 
-M_ON = 0.1
-M_OFF = 0.15
+M_ON = 0.2
+M_OFF = 0.3
 
-H_ON = 0.15
-H_OFF = 0.1
+H_ON = 0.3
+H_OFF = 0.2
 
-VH_ON = 1.5
-VH_OFF = 0.02
+VH_ON = 0.4
+VH_OFF = 0.1
 
 @mode
 class VeryLow(Mode):
@@ -146,6 +146,16 @@ class Rising(Mode):
         (False, VL_OFF),
         (True, VL_ON),
         (False, VL_OFF),
+        (True, VL_ON),
+        (False, VL_OFF),
+        (True, VL_ON),
+        (False, VL_OFF),
+        (True, VL_ON),
+        (False, VL_OFF),
+        (True, VL_ON),
+        (False, VL_OFF),
+        (True, VL_ON),
+        (False, VL_OFF),
         
         (True, L_ON),
         (False, L_OFF),
@@ -157,6 +167,16 @@ class Rising(Mode):
         (False, L_OFF),
         (True, L_ON),
         (False, L_OFF),
+        (True, L_ON),
+        (False, L_OFF),
+        (True, L_ON),
+        (False, L_OFF),
+        (True, L_ON),
+        (False, L_OFF),
+        (True, L_ON),
+        (False, L_OFF),
+        (True, L_ON),
+        (False, L_OFF),
         
         (True, M_ON),
         (False, M_OFF),
@@ -168,6 +188,16 @@ class Rising(Mode):
         (False, M_OFF),
         (True, M_ON),
         (False, M_OFF),
+        (True, M_ON),
+        (False, M_OFF),
+        (True, M_ON),
+        (False, M_OFF),
+        (True, M_ON),
+        (False, M_OFF),
+        (True, M_ON),
+        (False, M_OFF),
+        (True, M_ON),
+        (False, M_OFF),
 
         (True, H_ON),
         (False, H_OFF),
@@ -179,6 +209,16 @@ class Rising(Mode):
         (False, H_OFF),
         (True, H_ON),
         (False, H_OFF),
+        (True, H_ON),
+        (False, H_OFF),
+        (True, H_ON),
+        (False, H_OFF),
+        (True, H_ON),
+        (False, H_OFF),
+        (True, H_ON),
+        (False, H_OFF),
+        (True, H_ON),
+        (False, H_OFF),
 
         (True, VH_ON),
         (True, VH_OFF),
@@ -190,15 +230,25 @@ class Rising(Mode):
         (True, VH_OFF),
         (True, VH_ON),
         (True, VH_OFF),
+        (True, VH_ON),
+        (True, VH_OFF),
+        (True, VH_ON),
+        (True, VH_OFF),
+        (True, VH_ON),
+        (True, VH_OFF),
+        (True, VH_ON),
+        (True, VH_OFF),
+        (True, VH_ON),
+        (True, VH_OFF),
 
-        (True, 2),
-        (False, 4),
-        (True, 3),
+        (True, 1),
         (False, 3),
-        (True, 4),
+        (True, 2),
         (False, 2),
-        (True, 6),
-        (False, 6),
+        (True, 3),
+        (False, 1),
+        (True, 4),
+        (False, 4),
         
         
     ]

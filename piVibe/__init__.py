@@ -73,8 +73,8 @@ def mode(cls):
 @mode
 class VeryLow(Mode):
     states = [
-        (True, 0.01),
-        (False, 0.09)
+        (True, 0.02),
+        (False, 0.18)
     ]
     def __init__(self):
         self.gen = gen(Low.states)
@@ -109,14 +109,14 @@ class High(Mode):
 @mode    
 class VeryHigh(Mode):
     states = [
-        (True, 0.09),
-        (False, 0.01)
+        (True, 0.18),
+        (False, 0.02)
     ]
     def __init__(self):
         self.gen = gen(High.states)
 
 @mode        
-class Waves(Mode):
+class Rising(Mode):
     states = [
         (True, 0.01),
         (False, 0.09),

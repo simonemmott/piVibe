@@ -364,13 +364,9 @@ def random_mode():
         t_off = 0.2 - t_on
         steps = int(random.randint(10,100))
         if on:
-            toggle = False
             for i in range(steps):
-                toggle = not toggle
-                if toggle:
-                    yield (True, t_on)
-                else:
-                    yield (False, t_off)
+                yield (True, t_on)
+                yield (False, t_off)
                 
         else:
             yield (False, random.randint(5,60))

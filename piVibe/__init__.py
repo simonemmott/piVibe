@@ -373,7 +373,7 @@ def random_mode():
                     yield (False, t_off)
                 
         else:
-            yield (False, random.randint(5,120))
+            yield (False, random.randint(5,60))
             
             
         
